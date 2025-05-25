@@ -245,21 +245,6 @@ module Layer {
             return new moduleAttributes("Hardswish", moduleName);
     }
 
-    class Hardsigmoid : Module(?) {
-
-        proc init(type eltType = defaultEltType) {
-            super.init(eltType);
-            init this;
-            this.moduleName = "Hardsigmoid";            
-        }
-
-        override proc forward(input: dynamicTensor(eltType)): dynamicTensor(eltType) do
-            return input.hardsigmoid();
-        
-        override proc attributes(): moduleAttributes do
-            return new moduleAttributes("Hardsigmoid", moduleName);
-    }
-
     class Hardshrink : Module(?) {
         var alpha: eltType;
 
@@ -271,7 +256,7 @@ module Layer {
         }
 
         override proc forward(input: dynamicTensor(eltType)): dynamicTensor(eltType) do
-            return input.hardShrink(beta, threshold);
+            return input.hardShrink(alpha);
         
         override proc attributes(): moduleAttributes do
             return new moduleAttributes(
@@ -290,7 +275,7 @@ module Layer {
             this.minVal = minVal;
             this.maxVal = maxVal;
             init this;
-            this.moduleName = "Hardtanh";            
+            this.moduleName = "Hardtanh";
         }
 
         override proc forward(input: dynamicTensor(eltType)): dynamicTensor(eltType) do
@@ -348,8 +333,8 @@ module Layer {
             return new moduleAttributes(
                 "Threshold",
                 moduleName,
-                ("threshold",lower),
-                ("value",upper)
+                ("threshold",threshold),
+                ("value",value)
             );
     }
 
@@ -357,7 +342,7 @@ module Layer {
         var alpha: eltType;
 
         proc init(type eltType = defaultEltType, alpha: eltType=1.0) {
-            super.init(eltType)
+            super.init(eltType);
             this.alpha = alpha;
             init this;
             this.moduleName = "CELU";

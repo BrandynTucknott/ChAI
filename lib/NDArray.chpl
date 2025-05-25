@@ -1261,7 +1261,7 @@ inline proc ndarray.leakyrelu(negativeSlope: eltType=0.01) {
     ref rld = rl.data;
     forall i in dom.every() {
         const x = thisData[i];
-        rld[i] = Math.max(0, x) + negativeSlope * Math.min(0, x);
+        rld[i] = Math.max(0.0, x) + negativeSlope * Math.min(0.0, x);
     }
     return rl;
 }
