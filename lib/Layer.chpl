@@ -279,7 +279,7 @@ module Layer {
         }
 
         override proc forward(input: dynamicTensor(eltType)): dynamicTensor(eltType) do
-            return input.hardtanh(minVal, maxVal);
+            return input.hardTanh(minVal, maxVal);
         
         override proc attributes(): moduleAttributes do
             return new moduleAttributes(

@@ -232,18 +232,18 @@ set_target_properties(BrandynTanhshrink PROPERTIES
 
 
 
-add_executable(BrandynSoftsign
+add_executable(BrandynSoftSign
     ${CMAKE_CURRENT_SOURCE_DIR}/brandyn_softsign.chpl
     ${CHAI_LIB_FILES}
 )
-add_dependencies(BrandynSoftsign bridge)
-add_dependencies(BrandynSoftsign ChAI)
-target_link_options(BrandynSoftsign
+add_dependencies(BrandynSoftSign bridge)
+add_dependencies(BrandynSoftSign ChAI)
+target_link_options(BrandynSoftSign
     PRIVATE
     ${CHAI_LINKER_ARGS}
 )
 
-set_target_properties(BrandynSoftsign PROPERTIES
+set_target_properties(BrandynSoftSign PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}
 )
 
